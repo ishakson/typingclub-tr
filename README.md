@@ -1,25 +1,25 @@
 # TypingClub TR
 
-Ücretsiz Türkçe Q klavye yazma öğreticisi (TypingClub tarzı).
+TypingClub tarzı ücretsiz Türkçe Q yazma öğreticisi.
 
 ## Özellikler
 
-- Türkçe Q düzeni ve karakterler: **ç, ğ, ı, ö, ş, ü**
-- Ders seçimi (başlangıç → ileri)
-- Canlı klavye görselleştirmesi
-- WPM, doğruluk ve hata sayacı
+- Türkçe Q klavye + ç ğ ı ö ş ü
+- Ders yolu, kilitli ilerleme (1 yıldız = sonraki ders)
+- Ders başına 0–5 yıldız (doğruluk + WPM)
+- Parmak renkli klavye ve el ipuçları
+- Rozetler, seviye, localStorage ilerleme
+- Ses efektleri (aç/kapa)
 
 ## Çalıştırma
-
-Tarayıcıda `index.html` dosyasını açın. Yerel sunucu isterseniz:
 
 ```bash
 cd ~/Projects/typingclub-tr
 python3 -m http.server 8080
 ```
 
-Sonra http://localhost:8080 adresine gidin.
+veya `index.html` dosyasını tarayıcıda aç.
 
-## Lisans
+## Repo
 
-MIT — özgürce kullanın.
+https://github.com/ishakson/typingclub-tr

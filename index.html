@@ -3,61 +3,135 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TypingClub TR — Türkçe Yazma Öğreticisi</title>
+  <title>TypingClub TR — Dokunmatik Yazmayı Öğren</title>
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <header class="top">
-    <div class="brand">
-      <span class="logo" aria-hidden="true">⌨️</span>
-      <div>
-        <h1>TypingClub TR</h1>
-        <p class="tagline">Türkçe Q klavye ile ücretsiz yazma pratiği</p>
+  <!-- LANDING / MAP -->
+  <div id="view-home">
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#" id="brand-home">
+          <span class="brand-mark" aria-hidden="true">TC</span>
+          <span class="brand-text">TypingClub <em>TR</em></span>
+        </a>
+        <nav class="header-nav">
+          <button type="button" class="nav-btn" id="btn-badges" title="Rozetler">🏆 Rozetler</button>
+          <div class="header-stats">
+            <span id="total-stars" title="Toplam yıldız">⭐ 0</span>
+            <span id="total-level" title="Seviye">Lv 1</span>
+          </div>
+        </nav>
       </div>
-    </div>
-    <div class="stats" id="stats" hidden>
-      <div class="stat"><span class="stat-label">WPM</span><span class="stat-value" id="wpm">0</span></div>
-      <div class="stat"><span class="stat-label">Doğruluk</span><span class="stat-value" id="accuracy">100%</span></div>
-      <div class="stat"><span class="stat-label">Hata</span><span class="stat-value" id="errors">0</span></div>
-    </div>
-  </header>
+    </header>
 
-  <main>
-    <section id="lesson-picker" class="panel">
-      <h2>Ders seç</h2>
-      <p class="hint">Türkçe karakterler (ç, ğ, ı, ö, ş, ü) derslere dahil.</p>
-      <div id="lesson-list" class="lesson-grid"></div>
+    <section class="hero">
+      <div class="hero-inner">
+        <h1>Dokunmatik yazmayı ücretsiz öğren.</h1>
+        <p class="hero-sub">TypingClub tarzı pratik — <strong>Türkçe Q</strong> klavye ve ç, ğ, ı, ö, ş, ü karakterleri.</p>
+        <ul class="hero-bullets">
+          <li>Her derste 5 yıldıza ulaş</li>
+          <li>Parmak renkleri ve klavye rehberi</li>
+          <li>Seviye, rozet ve ilerleme kaydı</li>
+        </ul>
+        <button type="button" class="btn btn-cta" id="btn-start">Hemen başla</button>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="hero-stars">⭐⭐⭐⭐⭐</div>
+        <div class="hero-keys">A S D F&nbsp;&nbsp;J K L Ş</div>
+      </div>
     </section>
 
-    <section id="practice" class="panel" hidden>
-      <div class="practice-bar">
-        <button type="button" id="btn-back" class="btn ghost">← Dersler</button>
-        <h2 id="lesson-title">Ders</h2>
-        <button type="button" id="btn-restart" class="btn ghost">Yeniden başla</button>
+    <section class="map-section">
+      <div class="map-toolbar">
+        <h2>Ders yolu</h2>
+        <p class="map-hint">Her derste beş yıldıza ulaş. Bir yıldız yeter; ustalık için hepsini topla.</p>
       </div>
+      <div id="lesson-path" class="lesson-path"></div>
+    </section>
 
-      <div id="prompt" class="prompt" aria-live="polite"></div>
+    <footer class="site-footer">
+      <p>TypingClub TR — ücretsiz açık kaynak klon · Türkçe Q · Eğitim amaçlı</p>
+    </footer>
+  </div>
 
-      <label class="sr-only" for="input">Yazma alanı</label>
-      <textarea id="input" class="typing-input" rows="3" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Buraya yazmaya başla…"></textarea>
-
-      <div id="keyboard" class="keyboard" aria-hidden="true"></div>
-
-      <div id="result" class="result" hidden>
-        <h3>Ders bitti</h3>
-        <p id="result-text"></p>
-        <div class="result-actions">
-          <button type="button" id="btn-again" class="btn primary">Tekrarla</button>
-          <button type="button" id="btn-next" class="btn">Sonraki ders</button>
+  <!-- PRACTICE -->
+  <div id="view-practice" class="practice-view" hidden>
+    <div class="practice-top">
+      <button type="button" class="btn btn-ghost" id="btn-exit">← Çık</button>
+      <div class="practice-title-wrap">
+        <div class="stars-live" id="stars-live" aria-label="Yıldız hedefi">
+          <span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span>
         </div>
+        <h2 id="practice-title">Ders</h2>
       </div>
-    </section>
-  </main>
+      <div class="live-meters">
+        <div class="meter"><span>WPM</span><strong id="live-wpm">0</strong></div>
+        <div class="meter"><span>Doğruluk</span><strong id="live-acc">100%</strong></div>
+      </div>
+    </div>
 
-  <footer>
-    <p>Ücretsiz · Türkçe Q düzeni · Açık kaynak</p>
-  </footer>
+    <div class="progress-track" aria-hidden="true">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
 
+    <div class="prompt-stage">
+      <div id="prompt" class="prompt" aria-live="polite"></div>
+      <p class="finger-hint" id="finger-hint"></p>
+    </div>
+
+    <input id="hidden-input" class="hidden-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+
+    <div class="kb-stage">
+      <div id="hands" class="hands" aria-hidden="true">
+        <div class="hand left" id="hand-left"></div>
+        <div class="hand right" id="hand-right"></div>
+      </div>
+      <div id="keyboard" class="keyboard"></div>
+      <div class="finger-legend">
+        <span class="lg pinky">Serçe</span>
+        <span class="lg ring">Yüzük</span>
+        <span class="lg middle">Orta</span>
+        <span class="lg index">İşaret</span>
+        <span class="lg thumb">Baş</span>
+      </div>
+    </div>
+
+    <div class="practice-actions">
+      <button type="button" class="btn btn-ghost" id="btn-restart">Yeniden</button>
+      <label class="toggle"><input type="checkbox" id="toggle-sfx" checked /> Ses</label>
+      <label class="toggle"><input type="checkbox" id="toggle-hands" checked /> Eller</label>
+    </div>
+  </div>
+
+  <!-- RESULT MODAL -->
+  <div id="modal-result" class="modal" hidden>
+    <div class="modal-card result-card">
+      <div class="burst" aria-hidden="true"></div>
+      <h3 id="result-heading">Harika!</h3>
+      <div class="stars-big" id="stars-big">★★★★★</div>
+      <p id="result-stats" class="result-stats"></p>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" id="btn-retry">Tekrarla</button>
+        <button type="button" class="btn btn-primary" id="btn-continue">Devam</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BADGES MODAL -->
+  <div id="modal-badges" class="modal" hidden>
+    <div class="modal-card">
+      <button type="button" class="modal-close" id="badges-close" aria-label="Kapat">×</button>
+      <h3>Rozetler</h3>
+      <div id="badge-grid" class="badge-grid"></div>
+    </div>
+  </div>
+
+  <script src="js/sfx.js"></script>
+  <script src="js/progress.js"></script>
   <script src="js/lessons.js"></script>
   <script src="js/keyboard.js"></script>
   <script src="js/app.js"></script>
