@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TypingClub TR — Türkçe Yazma Öğreticisi</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">⌨️</span>
+      <div>
+        <h1>TypingClub TR</h1>
+        <p class="tagline">Türkçe Q klavye ile ücretsiz yazma pratiği</p>
+      </div>
+    </div>
+    <div class="stats" id="stats" hidden>
+      <div class="stat"><span class="stat-label">WPM</span><span class="stat-value" id="wpm">0</span></div>
+      <div class="stat"><span class="stat-label">Doğruluk</span><span class="stat-value" id="accuracy">100%</span></div>
+      <div class="stat"><span class="stat-label">Hata</span><span class="stat-value" id="errors">0</span></div>
+    </div>
+  </header>
+
+  <main>
+    <section id="lesson-picker" class="panel">
+      <h2>Ders seç</h2>
+      <p class="hint">Türkçe karakterler (ç, ğ, ı, ö, ş, ü) derslere dahil.</p>
+      <div id="lesson-list" class="lesson-grid"></div>
+    </section>
+
+    <section id="practice" class="panel" hidden>
+      <div class="practice-bar">
+        <button type="button" id="btn-back" class="btn ghost">← Dersler</button>
+        <h2 id="lesson-title">Ders</h2>
+        <button type="button" id="btn-restart" class="btn ghost">Yeniden başla</button>
+      </div>
+
+      <div id="prompt" class="prompt" aria-live="polite"></div>
+
+      <label class="sr-only" for="input">Yazma alanı</label>
+      <textarea id="input" class="typing-input" rows="3" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Buraya yazmaya başla…"></textarea>
+
+      <div id="keyboard" class="keyboard" aria-hidden="true"></div>
+
+      <div id="result" class="result" hidden>
+        <h3>Ders bitti</h3>
+        <p id="result-text"></p>
+        <div class="result-actions">
+          <button type="button" id="btn-again" class="btn primary">Tekrarla</button>
+          <button type="button" id="btn-next" class="btn">Sonraki ders</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Ücretsiz · Türkçe Q düzeni · Açık kaynak</p>
+  </footer>
+
+  <script src="js/lessons.js"></script>
+  <script src="js/keyboard.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
