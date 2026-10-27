@@ -223,13 +223,13 @@
   document.addEventListener("keydown", onKeydown);
   els.practice.addEventListener("click", () => els.input.focus());
 
-  els.btnStart.addEventListener("click", () => {
+  els.btnStart && els.btnStart.addEventListener("click", () => {
     const firstLocked = lessons.findIndex((_, i) => i > 0 && P.starsForLesson(lessons[i - 1].id) < 1);
     const idx = lessons.findIndex((l) => P.starsForLesson(l.id) < 5);
     startLesson(idx >= 0 ? idx : 0);
   });
   els.btnExit.addEventListener("click", showHome);
-  els.brand.addEventListener("click", (e) => { e.preventDefault(); showHome(); });
+  els.brand && els.brand.addEventListener("click", (e) => { e.preventDefault(); showHome(); });
   els.btnRestart.addEventListener("click", () => startLesson(state.index));
   els.btnRetry.addEventListener("click", () => startLesson(state.index));
   els.btnContinue.addEventListener("click", () => {
